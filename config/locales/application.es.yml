@@ -77,6 +77,7 @@
       edit_title: 'Modificar tema'
       correctly_created: 'Tema agregado correctamente.'
       correctly_updated: 'Tema actualizado correctamente.'
+      correctly_destroyed: 'Tema eliminado correctamente.'
       stale_object_error: 'El tema no pudo ser actualizado, intente nuevamente.'
       empty_index:
         html: 'No se ha creado ningún tema hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo tema</span>'

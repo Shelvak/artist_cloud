@@ -4,7 +4,7 @@ class PublicUserInteractionsTest < ActionDispatch::IntegrationTest
   test 'should ask for login' do
     visit root_path
 
-    assert_equal new_user_session_path, current_path
+    assert_equal root_path, current_path
 
     assert_page_has_no_errors!
   end
