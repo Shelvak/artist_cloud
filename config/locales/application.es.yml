@@ -7,11 +7,26 @@
 
   activerecord:
     models:
+      song:
+        one: 'Tema'
+        other: 'Temas'
       user:
         one: 'Usuario'
         other: 'Usuarios'
 
     attributes:
+      song:
+        title: 'Titulo'
+        file: 'Archivo'
+        artist: 'Artista'
+        album: 'Album'
+        year: 'Año'
+        comment: 'Comentario'
+        track: 'Nro de canción'
+        genre: 'Género'
+        version: 'Versión'
+        user_id: 'Usuario'
+
       user:
         name: 'Nombre'
         lastname: 'Apellido'
@@ -55,6 +70,17 @@
       empty_search:
         title:
           html: 'La búsqueda de <span class="label label-inverse">%{search}</span> no obtuvo ningún resultado.'
+    songs:
+      index_title: 'Listado de temas'
+      show_title: 'Detalle de tema'
+      new_title: 'Nuevo tema'
+      edit_title: 'Modificar tema'
+      correctly_created: 'Tema agregado correctamente.'
+      correctly_updated: 'Tema actualizado correctamente.'
+      stale_object_error: 'El tema no pudo ser actualizado, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ningún tema hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo tema</span>'
+      new: 'Nuevo tema'
     users:
       index_title: 'Listado de usuarios'
       show_title: 'Detalle de usuario'

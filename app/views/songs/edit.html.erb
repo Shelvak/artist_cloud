@@ -1,0 +1,6 @@
+<%= content_for :form_actions do %>
+  <%= link_to t('label.show'), @song %> |
+  <%= link_to t('label.list'), songs_path %>
+<% end %>
+
+<%= render 'form' %>

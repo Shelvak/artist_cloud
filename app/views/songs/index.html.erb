@@ -1,0 +1,50 @@
+<% if @songs.empty? %>
+  <%= render 'shared/empty_index' %>
+<% else %>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th><%= Song.human_attribute_name 'file' %></th>
+        <th><%= Song.human_attribute_name 'title' %></th>
+        <th><%= Song.human_attribute_name 'artist' %></th>
+        <th><%= Song.human_attribute_name 'album' %></th>
+        <th><%= Song.human_attribute_name 'year' %></th>
+        <th><%= Song.human_attribute_name 'comment' %></th>
+        <th><%= Song.human_attribute_name 'track' %></th>
+        <th><%= Song.human_attribute_name 'genre' %></th>
+        <th><%= Song.human_attribute_name 'user_id' %></th>
+        <th><%= Song.human_attribute_name 'version' %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @songs.each do |song| %>
+        <tr>
+          <td><%= song.file %></td>
+          <td><%= song.title %></td>
+          <td><%= song.artist %></td>
+          <td><%= song.album %></td>
+          <td><%= song.year %></td>
+          <td><%= song.comment %></td>
+          <td><%= song.track %></td>
+          <td><%= song.genre %></td>
+          <td><%= song.user_id %></td>
+          <td><%= song.version %></td>
+          <td><%= link_to_show song %></td>
+          <td><%= link_to_edit edit_song_path(song) if can? :update, song %></td>
+          <td><%= link_to_destroy song if can? :destroy, song %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @songs %>
+<% end %>
+
+<div class="panel-footer">
+  <%= link_to(
+    t('view.songs.new', default: :'label.new'),
+    new_song_path, class: 'btn btn-primary'
+  ) if can? :create, Song %>
+</div>

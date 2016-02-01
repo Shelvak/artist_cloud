@@ -22,5 +22,5 @@
 //= require mobile
 //= require users
 //= require bootstrap
-//= require ripples
-//= require material
+//= require jsmediatags
+//= require songs

@@ -1,0 +1,39 @@
+<h2><%= @song %></h2>
+
+<p>
+  <strong><%= Song.human_attribute_name 'artist' %></strong>:
+  <%= @song.artist %>
+</p>
+<p>
+  <strong><%= Song.human_attribute_name 'album' %></strong>:
+  <%= @song.album %>
+</p>
+<p>
+  <strong><%= Song.human_attribute_name 'year' %></strong>:
+  <%= @song.year %>
+</p>
+<p>
+  <strong><%= Song.human_attribute_name 'comment' %></strong>:
+  <%= @song.comment %>
+</p>
+<p>
+  <strong><%= Song.human_attribute_name 'track' %></strong>:
+  <%= @song.track %>
+</p>
+<p>
+  <strong><%= Song.human_attribute_name 'genre' %></strong>:
+  <%= @song.genre %>
+</p>
+<p>
+  <strong><%= Song.human_attribute_name 'user_id' %></strong>:
+  <%= @song.user %>
+</p>
+<p>
+  <strong><%= Song.human_attribute_name 'version' %></strong>:
+  <%= @song.version %>
+</p>
+
+<div class="panel-footer">
+  <%= link_to t('label.edit'), edit_song_path(@song) if can? :update, @song %> |
+  <%= link_to t('label.list'), songs_path %>
+</div>

@@ -1,0 +1,23 @@
+<%= simple_form_for(@song) do |f| %>
+  <%= render 'shared/error_explanation', f: f %>
+
+  <div class="form-inputs">
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :file, as: :file, input_html: { class: 'extraible_file' } %>
+        <%= f.input :title %>
+        <%= f.input :artist %>
+        <%= f.input :album %>
+        <%= f.input :year %>
+        <%= f.input :comment %>
+        <%= f.input :track %>
+        <%= f.input :genre %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-footer">
+    <div class="pull-right"><%= yield :form_actions %></div>
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
