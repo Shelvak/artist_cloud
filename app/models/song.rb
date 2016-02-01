@@ -1,6 +1,7 @@
 class Song < ActiveRecord::Base
   has_paper_trail
   has_magick_columns title: :string, artist: :string, genre: :string
+  mount_uploader :file, AudioUploader
 
   validates :file, :title, :artist, :user_id, presence: true
 

@@ -22,7 +22,7 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'bootstrap-material-design'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'byebug'

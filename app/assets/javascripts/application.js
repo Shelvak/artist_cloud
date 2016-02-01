@@ -24,3 +24,5 @@
 //= require bootstrap
 //= require jsmediatags
 //= require songs
+//= require audio-controls
+//= require music
