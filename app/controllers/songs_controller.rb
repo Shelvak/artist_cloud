@@ -1,10 +1,16 @@
 class SongsController < ApplicationController
   before_action :set_song, only:  [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+
+  check_authorization
+  load_and_authorize_resource
 
   # GET /songs
   def index
     @title = t('view.songs.index_title')
-    @songs = Song.all.page(params[:page])
+    @searchable = true
+    @songs = songs_scope.filtered_list(params[:q]).
+                         default_order.page(params[:page])
   end
 
   # GET /songs/1
@@ -61,14 +67,19 @@ class SongsController < ApplicationController
   private
 
     def set_song
-      @song = Song.find(params[:id])
+      @song = songs_scope.find(params[:id])
+    end
+
+    def songs_scope
+      current_user.admin? ? Song.all : current_user.songs
     end
 
     def song_params
       _permitted = params.require(:song).permit(
         :file, :title, :artist, :album, :year, :comment, :track, :genre,
       )
-      _permitted['user_id'] = current_user.id
+      # If an admin change the file that shouldn't change of owner
+      _permitted['user_id'] = @song.try(:user_id) || current_user.id
       _permitted
     end
 end

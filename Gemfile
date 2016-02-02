@@ -17,6 +17,7 @@ gem 'role_model'
 gem 'sidekiq'
 
 # Assets group
+gem 'turbolinks'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'

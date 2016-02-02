@@ -5,6 +5,7 @@
     <div class="row">
       <div class="col-md-6">
         <%= f.input :file, as: :file, input_html: { class: 'extraible_file' } %>
+        <%= f.input :file_cache, as: :hidden %>
         <%= f.input :title %>
         <%= f.input :artist %>
         <%= f.input :album %>
