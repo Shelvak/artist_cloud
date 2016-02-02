@@ -5,7 +5,8 @@ class Song < ActiveRecord::Base
 
   scope :default_order, -> { order(artist: :asc, album: :asc, track: :asc) }
 
-  validates :file, :title, :artist, :user_id, presence: true
+  validates :title, :artist, :user_id, presence: true
+  validate :file_presence
 
   belongs_to :user
 
@@ -19,5 +20,12 @@ class Song < ActiveRecord::Base
 
   def self.suggested
     all
+  end
+
+  def file_presence
+    if file.blank?
+      self.errors.add :file, :blank
+      false
+    end
   end
 end

@@ -26,7 +26,11 @@ class SongsControllerTest < ActionController::TestCase
 
   test "should create song" do
     assert_difference('Song.count') do
-      post :create, song: Fabricate.attributes_for(:song)
+      file = Rack::Test::UploadedFile.new(
+        Rails.root.join('test', 'files', 'sample.mp3'),
+        'audio/mpeg'
+      )
+      post :create, song: Fabricate.attributes_for(:song, file: file)
     end
 
     assert_redirected_to song_url(assigns(:song))

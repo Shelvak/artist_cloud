@@ -3,7 +3,7 @@
   <div class="playlistContainer" id="listContainer">
     <ul id="playListContainer">
       <% @songs.each do |song| %>
-				<li data-src="<%= audio_path(song.file.url) %>"><%= song.title %></li>
+				<li data-src="<%= song.file.url %>"><%= song.title %></li>
 			<% end %>
 		</ul>
 	</div>

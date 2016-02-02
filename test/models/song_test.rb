@@ -34,6 +34,14 @@ class SongTest < ActiveSupport::TestCase
     @song.user_id = ''
 
     assert @song.invalid?
+    assert_equal 3, @song.errors.size
+    [:title, :artist, :user_id].each do |attr|
+      assert_equal_messages @song, attr, :blank
+    end
+
+    @song = Song.new
+
+    assert @song.invalid?
     assert_equal 4, @song.errors.size
     [:file, :title, :artist, :user_id].each do |attr|
       assert_equal_messages @song, attr, :blank
