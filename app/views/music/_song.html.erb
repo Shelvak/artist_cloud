@@ -1,0 +1,15 @@
+<% playlist ||= nil %>
+<% action = get_action_for_song(song, playlist) %>
+<tr>
+  <td><%= song.track %></td>
+  <td><%= song.title %></td>
+  <td><%= song.artist %></td>
+  <td><%= song.album %></td>
+  <td><%= song.year %></td>
+  <td>
+    <%= link_to_add_or_remove_song(song, action) %>
+  </td>
+  <% if defined?(dynamic) %>
+    <td class="take-me-out" data-action="<%= action %>" data-uuid="<%= song.id %>" data-src="<%= song.file.url %>"><%= song.title %></td>
+  <% end %>
+</tr>
