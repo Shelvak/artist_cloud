@@ -2,10 +2,17 @@ class MusicController < ApplicationController
   before_action :init_song_ids
   before_action :set_music_song, only: [:remove_from_list, :add_to_list]
 
+  layout ->(controller) { controller.request.xhr? ? false : 'application' }
+
   def index
-    @songs = Song.all.default_order.page(params[:page])
+    @songs = Song.filtered_list(params[:q]).default_order.page(params[:page])
 
     @playlist = Song.where(id: song_ids)
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def add_to_list

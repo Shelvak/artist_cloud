@@ -1,48 +1,25 @@
 <div>
-<div class="containerPlayer">
-  <div class="playlistContainer" id="listContainer">
-    <ul id="playListContainer">
-      <% @playlist.each do |song| %>
-        <li data-uuid="<%= song.id %>" data-src="<%= song.file.url %>"><%= song.title %></li>
-			<% end %>
-		</ul>
-	</div>
-	<div id="playerContainer">
-		<div id="controlContainer">
-			<ul class="controls">
-				<li>
-					<a href="#" class="shuffle shuffleActive" data-attr="shuffled"></a>
-				</li>
-				<li>
-					<a href="#" class="left" data-attr="prevAudio"></a>
-				</li>
-				<li>
-					<a href="#" class="play" data-attr="playPauseAudio"></a>
-				</li>
-				<li>
-					<a href="#" class="right" data-attr="nextAudio"></a>
-				</li>
-				<li>
-					<a href="#" class="repeat" data-attr="repeatSong"></a>
-				</li>
-			</ul>
-			<div class="audioDetails">
-				<span class="songPlay"></span>
-				<span data-attr="timer" class="audioTime"></span>
-			</div>
-			<div class="progress">
-				<div data-attr="seekableTrack" class="seekableTrack"></div>
-				<div class="updateProgress"></div>
-			</div>
-		</div>
+  <%= form_for :search, method: :get, remote: true, html: {class: ''} do |f| %>
+    <%= text_field_tag(:q, params[:q],
+      class: 'search-query span2', placeholder: t('label.search')) %>
+    <%= link_to content_tag(:i, nil, class: 'mdi-action-search'), '#',
+      class: 'search',
+      title: t('label.search'),
+      data: {
+        'show-tooltip' => true,
+        'placement' => 'bottom',
+        'search-for' => '#songs_tbody'
+      } %>
+    <%#= submit_tag t('label.search'), class: 'btn btn-info',
+      title: t('label.search'),
+      data: {
+        'show-tooltip' => true,
+        'placement' => 'bottom',
+        'search-for' => '#songs_tbody'
+      } %>
 
-		<div class="volumeControl">
-			<div class="volume volume1"></div>
-			<input class="bar" data-attr="rangeVolume" type="range" min="0" max="1" step="0.1" value="0.7" />
-		</div>
-	</div>
+  <% end %>
 </div>
-
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -55,10 +32,8 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @songs.each do |song| %>
-      <%= render 'song', song: song, playlist: @playlist %>
-    <% end %>
+  <tbody id="songs_tbody">
+    <%= render "songs_list" %>
   </tbody>
 </table>
 

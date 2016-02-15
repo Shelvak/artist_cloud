@@ -1,5 +1,5 @@
 * { padding: 0px; margin :0px; }
-body { background-color:#999999; font-family: SourceSansPro-Regular, Helvetica, Arial, 'sans-serif'; font-size: 14px; line-height: 1.428571429; }
+body {font-family: SourceSansPro-Regular, Helvetica, Arial, 'sans-serif'; font-size: 14px; line-height: 1.428571429; }
 ul, li { list-style: none; }
 .mainContainer { margin:0 auto; width:800px }
 .containerPlayer, .containerSource { display:inline-block; float:left; padding:10px; margin:0px 10px; }

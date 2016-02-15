@@ -1,3 +1,16 @@
 // Place all the styles related to the music controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#playListContainer {
+  color: black;
+  padding: 0;
+  max-height: 135px;
+  overflow-y: auto;
+
+  li {
+    font-size: 1.2em;
+    padding: .25em 1em;
+    line-height: 1em;
+  }
+}

@@ -8,6 +8,10 @@ InitializeAudioControls = ->
       autoPlay : false,
       timer: 'increment',
       onAudioChange: (response) ->
+        #playPauseButton = $('#playerContainer #controlContainer').find('[data-attr="playPauseAudio"]')[0]
+        #playPauseButton.classList.remove('playAudio')
+        #playPauseButton.classList.add('pauseAudio')
+        #console.log(response)
         $('.songPlay').text(response.title + ' ...')
       onVolumeChange: (vol) ->
         if vol == 0
@@ -22,7 +26,6 @@ InitializeAudioControls = ->
         $('.volume').attr('class','volume ' + klass)
 
     AudioControlsInitialized = true
-
 
 $(document).on 'page:change', InitializeAudioControls
 
